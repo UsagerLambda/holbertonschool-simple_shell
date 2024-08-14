@@ -1,5 +1,6 @@
 C - simple_shell
 
+```mermaid
 flowchart TD
     A([Start]) --> B[[argv < 2]]
     B -- yes --> C[[Display prompt]]
@@ -22,8 +23,6 @@ flowchart TD
     L -- yes --> M[[Execute command]]
     M --> N([End])
 
-
-
-
     classDef error fill:#f96,stroke:#333,stroke-width:2px;
     classDef exit fill:#e96,stroke:#333,stroke-width:2px;
+```

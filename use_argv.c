@@ -8,10 +8,11 @@
  */
 int use_argv(int argc, char *argv[], char *envp[])
 {
-	char *tokens[argc];
+	int i = 0;
+	char **tokens = malloc(argc * sizeof(char *));
 	int nb_tokens = argc - 1;
 
-	for (int i = 0; i < nb_tokens; i++)
+	for (i = 0; i < nb_tokens; i++)
 	{
 	tokens[i] = argv[i + 1];
 	}

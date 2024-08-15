@@ -8,10 +8,10 @@
  */
 void it_exist(char *dir, char *tokens[], int nb_tokens, char *envp[])
 {
+pid_t pid;
 char path[PATH_MAX];
 strcpy(path, dir);
 strcat(path, "/");
-pid_t pid;
 
 if (nb_tokens > 0 && tokens[0] != NULL)
 	strcat(path, tokens[0]);

@@ -11,9 +11,13 @@ int open_shell(int argc, char *argv[], char *envp[])
 char *prompt = "$ ";
 char *line_ptr = NULL;
 char *tokens[10];
-char *pathfile[PATH_MAX];
 int nb_tokens;
-size_t size_line = 0, nbchar_line;
+size_t size_line = 0;
+int nbchar_line = 0;
+
+(void)argc;
+(void)argv;
+(void)envp;
 
 while (1)
 {

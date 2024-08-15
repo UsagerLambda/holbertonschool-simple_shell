@@ -7,6 +7,7 @@
  */
 void which_path(char **tokens, int nb_tokens, char *envp[])
 {
+int found = 0;
 char *path, *dir;
 char *path_env = getenv("PATH");
 
@@ -19,9 +20,10 @@ if (path == NULL)
 errors(EXIT_FAILURE, "(!) errors with strdup");
 
 dir = strtok(path, ":");
-while (dir != NULL)
+while (dir != NULL && !found)
 {
-	it_exist(dir, tokens, nb_tokens, envp);
+	if (it_exist(dir, tokens, nb_tokens, envp))
+	found = 1;
 	dir = strtok(NULL, ":");
 }
 free(path);

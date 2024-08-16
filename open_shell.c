@@ -36,13 +36,8 @@ while (1)
 
 	parse(line_ptr, tokens, &nb_tokens);
 
-	if (strcmp(tokens[0], "exit") == 0)
-	{
-		free(line_ptr);
-		exit(0);
-	}
-
-	which_path(tokens, nb_tokens, envp);
+	if (execute_builtin(tokens, envp) == -1)
+		which_path(tokens, nb_tokens, envp);
 }
 free(line_ptr);
 return (0);

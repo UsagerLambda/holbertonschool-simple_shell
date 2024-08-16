@@ -11,7 +11,7 @@ int open_shell(int argc, char *argv[], char *envp[])
 char *prompt = "$ ";
 char *line_ptr = NULL;
 char *tokens[10];
-int nb_tokens, i = 0;
+int nb_tokens;
 size_t size_line = 0;
 int nbchar_line = 0;
 

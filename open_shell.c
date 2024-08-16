@@ -11,7 +11,7 @@ int open_shell(int argc, char *argv[], char *envp[])
 char *prompt = "$ ";
 char *line_ptr = NULL;
 char *tokens[10];
-int nb_tokens;
+int nb_tokens, i = 0;
 size_t size_line = 0;
 int nbchar_line = 0;
 
@@ -35,6 +35,13 @@ while (1)
 		line_ptr[nbchar_line - 1] = '\0';
 
 	parse(line_ptr, tokens, &nb_tokens);
+
+	if (strcmp(tokens[0], "exit") == 0)
+	{
+		free(line_ptr);
+		exit(0);
+	}
+
 	which_path(tokens, nb_tokens, envp);
 }
 free(line_ptr);

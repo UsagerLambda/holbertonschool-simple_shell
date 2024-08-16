@@ -8,6 +8,19 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 #include <limits.h>
+/**
+ * struct builtin_s - -
+ * @cmd: -
+ * @func: -
+ */
+typedef struct builtin_s
+{
+	char *cmd;
+	int (*func)(char **args, char **envp);
+} builtin_t;
+int execute_builtin(char **tokens, char **envp);
+int shell_exit(char **args, char **envp);
+int shell_env(char **args, char **envp);
 int open_shell(int argc, char *argv[], char *envp[]);
 int use_argv(int argc, char *argv[], char *envp[]);
 void parse(char *line_ptr, char *tokens[], int *nb_tokens);

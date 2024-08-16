@@ -12,10 +12,7 @@ if (argc < 2)
 open_shell(argc, argv, envp);
 else
 {
-char *tokens[10];
-int nb_tokens;
-parse(argv[1], tokens, &nb_tokens);
-which_path(tokens, nb_tokens, envp);
+use_argv(argc, argv, envp);
 }
 return (0);
 }

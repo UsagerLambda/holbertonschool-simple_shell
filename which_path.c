@@ -16,6 +16,9 @@ errors(EXIT_FAILURE, "(!) errors with getenv");
 
 path = strdup(path_env);
 
+if (access(tokens[0], X_OK) == 0)
+	execute(tokens[0], tokens, envp);
+
 if (path == NULL)
 errors(EXIT_FAILURE, "(!) errors with strdup");
 

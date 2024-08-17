@@ -28,4 +28,8 @@ void which_path(char **tokens, int nb_tokens, char *envp[]);
 void errors(int code, char *str);
 int it_exist(char *dir, char *tokens[], int nb_tokens, char *envp[]);
 void execute(char *path, char *tokens[], char *envp[]);
+int execute_builtin(char **tokens, char **envp);
+int path_handle(char *command, char *full_path);
+
+
 #endif

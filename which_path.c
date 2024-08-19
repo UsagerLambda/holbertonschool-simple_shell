@@ -1,9 +1,13 @@
 #include "header.h"
 /**
- * which_path - find the path of tokens
- * @tokens: tokens to find the path
- * @nb_tokens: numbers of tokens
- * @envp: environnement
+ * which_path - Find the full path of a command and executes it.
+ * @tokens: The array of command and arguments.
+ * @nb_tokens: The number of tokens in the command.
+ * @envp: The environment variables.
+ *
+ * This function searches the directories listed in the PATH environment
+ * variable for an executable file that matches the command in tokens[0].
+ * If found, it executes the command; otherwise, it prints an error message.
  */
 void which_path(char **tokens, int nb_tokens, char *envp[])
 {

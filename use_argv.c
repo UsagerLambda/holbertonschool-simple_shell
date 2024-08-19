@@ -1,10 +1,15 @@
 #include "header.h"
 /**
- * use_argv - execute the arguments
- * @argc: numbers of arguments
- * @argv: content of arguments
- * @envp: environnement
- * Return: 0
+ * use_argv - Handles command-line arguments in non-interactive mode.
+ * @argc: The number of command-line arguments.
+ * @argv: An array of pointers to the arguments.
+ * @envp: The environment variables.
+ *
+ * This function processes commands passed as arguments to the shell.
+ * It tokenizes the arguments and searches for the command in the PATH.
+ * If found, the command is executed.
+ *
+ * Return: Always returns 0.
  */
 int use_argv(int argc, char *argv[], char *envp[])
 {

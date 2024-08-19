@@ -1,9 +1,13 @@
 #include "header.h"
 /**
- * parse - divide the string in tokens
- * @line_ptr: string to divide
- * @tokens: numbers of arguments
- * @nb_tokens: -
+ * parse - Tokenizes a command line into individual arguments.
+ * @line_ptr: The command line string to tokenize.
+ * @tokens: An array to store the tokens.
+ * @nb_tokens: A pointer to the number of tokens parsed.
+ *
+ * This fonction splits the command line into tokens separated by spaces.
+ * Each token is stored in the tokens array, and the total number of tokens
+ * is stored in nb_tokens.
  */
 void parse(char *line_ptr, char *tokens[], int *nb_tokens)
 {

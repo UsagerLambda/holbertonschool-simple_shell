@@ -9,6 +9,6 @@
  */
 void errors(int code, char *str)
 {
-dprintf(STDERR_FILENO, "%s\n", str);
+printf("%s\n", str);
 exit(code);
 }

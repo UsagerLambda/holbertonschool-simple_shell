@@ -15,12 +15,12 @@ char *token = NULL;
 int i = 0;
 *nb_tokens = 0;
 
-token = strtok(line_ptr, " ");
+token = strtok(line_ptr, " \n\t");
 while (token)
 {
 	tokens[i] = token;
 	i++;
-	token = strtok(NULL, " ");
+	token = strtok(NULL, " \n\t");
 }
 *nb_tokens = i;
 tokens[i] = NULL;

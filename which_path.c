@@ -27,6 +27,7 @@ if (access(tokens[0], X_OK) == 0)
 {
 	execute(tokens[0], tokens, envp);
 	free(path);
+	return;
 }
 
 dir = strtok(path, ":");

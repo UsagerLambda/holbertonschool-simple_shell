@@ -11,12 +11,11 @@
 void errors(int code, char *str, char *tok[])
 {
 (void)str;
-(void)code;
 if (isatty(0) == 0)
 {
-printf("hsh: %d: %s: not found\n", EXIT_FAILURE, tok[0]);
+fprintf(stderr, "hsh: %d: %s: not found\n", code, tok[0]);
 exit(127);
 }
 else
-printf("%s : command not found\n", tok[0]);
+fprintf(stderr, "%s : command not found\n", tok[0]);
 }

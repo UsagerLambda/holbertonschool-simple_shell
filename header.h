@@ -31,7 +31,7 @@ int open_shell(int argc, char *argv[], char *envp[]);
 int use_argv(int argc, char *argv[], char *envp[]);
 void parse(char *line_ptr, char *tokens[], int *nb_tokens);
 void which_path(char **tokens, int nb_tokens, char *envp[]);
-void errors(int code, char *str);
+void errors(int code, char *str, char *tok[]);
 int it_exist(char *dir, char *tokens[], int nb_tokens, char *envp[]);
 void execute(char *path, char *tokens[], char *envp[]);
 #endif

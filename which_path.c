@@ -16,7 +16,7 @@ char *path, *dir;
 char *path_env = getenv("PATH");
 
 if (path_env == NULL)
-errors(EXIT_FAILURE, "getenv failed");
+errors(EXIT_FAILURE, "getenv failed", tokens);
 
 path = strdup(path_env);
 
@@ -27,7 +27,7 @@ if (access(tokens[0], X_OK) == 0)
 }
 
 if (path == NULL)
-errors(EXIT_FAILURE, "strdup failed");
+errors(EXIT_FAILURE, "strdup failed", tokens);
 
 dir = strtok(path, ":");
 while (dir != NULL && !found)
@@ -41,7 +41,7 @@ while (dir != NULL && !found)
 }
 
 if (!found)
-	printf("%s : command not found\n", tokens[0]);
+	errors(EXIT_FAILURE, "%s : command not found\n", tokens);
 
 free(path);
 }

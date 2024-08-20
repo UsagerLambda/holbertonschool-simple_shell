@@ -26,14 +26,16 @@ int nbchar_line = 0;
 
 while (1)
 {
-	printf("%s", prompt);
+	if (isatty(STDIN_FILENO))
+		printf("%s", prompt);
 	nbchar_line = getline(&line_ptr, &size_line, stdin);
 
 	if (nbchar_line == -1)
 	{
 	free(line_ptr);
-	printf("\n");
-	return (-1);
+	if (isatty(STDIN_FILENO))
+		printf("\n");
+	return (0);
 	}
 
 	if (line_ptr[nbchar_line - 1] == '\n')

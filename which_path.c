@@ -40,6 +40,5 @@ while (dir != NULL && !found)
 
 if (!found)
 	errors(EXIT_FAILURE, "command not found", tokens);
-
 free(path);
 }

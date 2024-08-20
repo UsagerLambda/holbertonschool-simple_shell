@@ -20,28 +20,25 @@ errors(EXIT_FAILURE, "getenv failed", tokens);
 
 path = strdup(path_env);
 
+if (path == NULL)
+errors(EXIT_FAILURE, "strdup failed", tokens);
+
 if (access(tokens[0], X_OK) == 0)
 {
 	execute(tokens[0], tokens, envp);
 	free(path);
 }
 
-if (path == NULL)
-errors(EXIT_FAILURE, "strdup failed", tokens);
-
 dir = strtok(path, ":");
 while (dir != NULL && !found)
 {
 	if (it_exist(dir, tokens, nb_tokens, envp))
-	{
 	found = 1;
-	break;
-	}
 	dir = strtok(NULL, ":");
 }
 
 if (!found)
-	errors(EXIT_FAILURE, "%s : command not found\n", tokens);
+	errors(EXIT_FAILURE, "command not found", tokens);
 
 free(path);
 }

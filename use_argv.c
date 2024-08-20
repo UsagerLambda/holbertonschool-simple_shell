@@ -14,15 +14,20 @@
 int use_argv(int argc, char *argv[], char *envp[])
 {
 	int i = 0;
+	int nb_tokens;
 	char **tokens = malloc(argc * sizeof(char *));
-	int nb_tokens = argc - 1;
+
+	if (tokens == NULL)
+		errors(EXIT_FAILURE, "malloc failed", argv);
+
+	nb_tokens = argc - 1;
 
 	for (i = 0; i < nb_tokens; i++)
-	{
-	tokens[i] = argv[i + 1];
-	}
+		tokens[i] = argv[i + 1];
+
 	tokens[nb_tokens] = NULL;
 
 	which_path(tokens, nb_tokens, envp);
+	free(tokens);
 	return (0);
 }

@@ -10,7 +10,7 @@
  */
 void errors(int code, char *str, char *tok[])
 {
-fprintf(stderr, "Error: %s\n", str);
+(void)str;
 if (isatty(0) == 0)
 {
 fprintf(stderr, "hsh: %d: %s: not found\n", code, tok[0]);

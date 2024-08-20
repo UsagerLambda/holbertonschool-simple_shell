@@ -44,7 +44,7 @@ while (1)
 	parse(line_ptr, tokens, &nb_tokens);
 
 	if (execute_builtin(tokens, envp) == -1)
-		which_path(tokens, nb_tokens, envp);
+		which_path(tokens, nb_tokens, envp, line_ptr);
 }
 free(line_ptr);
 return (0);

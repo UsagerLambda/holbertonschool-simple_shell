@@ -20,14 +20,14 @@ int it_exist(char *dir, char *tokens[], int nb_tokens, char *envp[])
 char path[PATH_MAX];
 
 if (strcpy(path, dir) == NULL)
-errors(EXIT_FAILURE, "strcpy failed", tokens);
+errors(EXIT_FAILURE, "strcpy failed", tokens, NULL);
 if (strcat(path, "/") == NULL)
-errors(EXIT_FAILURE, "strcat failed", tokens);
+errors(EXIT_FAILURE, "strcat failed", tokens, NULL);
 
 if (nb_tokens > 0 && tokens[0] != NULL)
 {
 	if (strcat(path, tokens[0]) == NULL)
-	errors(EXIT_FAILURE, "strcat failed", tokens);
+	errors(EXIT_FAILURE, "strcat failed", tokens, NULL);
 }
 
 if (access(path, X_OK) == 0)

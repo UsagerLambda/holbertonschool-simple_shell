@@ -18,14 +18,18 @@ void execute(char *path, char *tokens[], char *envp[])
 
 	pid = fork();
 	if (pid == -1)
-	errors(EXIT_FAILURE, "fork");
+	errors(EXIT_FAILURE, "fork failed");
 
 	if (pid == 0)
 	{
 	execve(path, &tokens[0], envp);
-	perror("execve failed");
-	exit(EXIT_FAILURE);
+	errors(EXIT_FAILURE, "execve failed");
 	}
 	else
-	wait(&status);
+	{
+	if (wait(&status) == -1)
+	{
+		errors(EXIT_FAILURE, "wait failed");
+	}
+	}
 }

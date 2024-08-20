@@ -18,16 +18,23 @@
 int it_exist(char *dir, char *tokens[], int nb_tokens, char *envp[])
 {
 char path[PATH_MAX];
-strcpy(path, dir);
-strcat(path, "/");
+
+if (strcpy(path, dir) == NULL)
+errors(EXIT_FAILURE, "strcpy failed");
+if (strcat(path, "/") == NULL)
+errors(EXIT_FAILURE, "strcat failed");
 
 if (nb_tokens > 0 && tokens[0] != NULL)
-	strcat(path, tokens[0]);
+{
+	if (strcat(path, tokens[0]) == NULL)
+	errors(EXIT_FAILURE, "strcat failed");
+}
 
 if (access(path, X_OK) == 0)
 {
 	execute(path, tokens, envp);
 	return (1);
 }
+
 return (0);
 }

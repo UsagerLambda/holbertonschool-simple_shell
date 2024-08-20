@@ -16,22 +16,32 @@ char *path, *dir;
 char *path_env = getenv("PATH");
 
 if (path_env == NULL)
-errors(EXIT_FAILURE, "(!) errors with getenv");
+errors(EXIT_FAILURE, "getenv failed");
 
 path = strdup(path_env);
 
 if (access(tokens[0], X_OK) == 0)
+{
 	execute(tokens[0], tokens, envp);
+	free(path);
+}
 
 if (path == NULL)
-errors(EXIT_FAILURE, "(!) errors with strdup");
+errors(EXIT_FAILURE, "strdup failed");
 
 dir = strtok(path, ":");
 while (dir != NULL && !found)
 {
 	if (it_exist(dir, tokens, nb_tokens, envp))
+	{
 	found = 1;
+	break;
+	}
 	dir = strtok(NULL, ":");
 }
+
+if (!found)
+	printf("%s : command not found\n", tokens[0]);
+
 free(path);
 }

@@ -17,12 +17,18 @@ char *path_env = getenv("PATH");
 (void)line_ptr;
 
 if (path_env == NULL)
+{
 errors(EXIT_FAILURE, "getenv failed", tokens, NULL);
+free(path_env);
+}
 
 path = strdup(path_env);
 
 if (path == NULL)
+{
 errors(EXIT_FAILURE, "strdup failed", tokens, NULL);
+free(path);
+}
 
 if (access(tokens[0], X_OK) == 0)
 {
@@ -40,6 +46,14 @@ while (dir != NULL && !found)
 }
 
 if (!found)
+	{
 	errors(EXIT_FAILURE, "command not found", tokens, NULL);
+	free(dir);
+	free(path_env);
+	free(path);
+	}
+
+free(dir);
+free(path_env);
 free(path);
 }

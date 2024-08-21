@@ -20,6 +20,7 @@ int open_shell(int argc, char *argv[], char *envp[])
     int nb_tokens;
     size_t size_line = 0;
     ssize_t nbchar_line = 0;
+    int i = 0;
 
     (void)argc;
     (void)argv;
@@ -28,21 +29,16 @@ int open_shell(int argc, char *argv[], char *envp[])
     while (1)
     {
         if (isatty(STDIN_FILENO))
-        {
             printf("%s", prompt);
-        }
+
         nbchar_line = getline(&line_ptr, &size_line, stdin);
 
         if (nbchar_line == -1)
         {
             if (line_ptr)
-            {
                 free(line_ptr);
-            }
             if (isatty(STDIN_FILENO))
-            {
                 printf("\n");
-            }
             return (0);
         }
 
@@ -60,8 +56,12 @@ int open_shell(int argc, char *argv[], char *envp[])
     }
 
     if (line_ptr)
-    {
         free(line_ptr);
+
+    while (tokens[i])
+    {
+    tokens[i] = NULL;
+    i++;
     }
 
     return (0);

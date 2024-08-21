@@ -32,6 +32,6 @@ int use_argv(int argc, char *argv[], char *envp[]);
 void parse(char *line_ptr, char *tokens[], int *nb_tokens);
 void which_path(char **tokens, int nb_tokens, char *envp[], char *line_ptr);
 void errors(int code, char *str, char *tok[], char *line_ptr);
-int it_exist(char *dir, char *tokens[], int nb_tokens, char *envp[]);
-void execute(char *path, char *tokens[], char *envp[]);
+int it_exist(char *dir, char *tokens[], int nb_tokens, char *envp[], char *line_ptr);
+void execute(char *path, char *tokens[], char *envp[], char *line_ptr);
 #endif

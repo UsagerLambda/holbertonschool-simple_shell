@@ -15,30 +15,30 @@
  *
  * Return: Returns 1 if the command exists and is executable, 0 otherwise.
  */
-int it_exist(char *dir, char *tokens[], int nb_tokens, char *envp[])
+int it_exist(char *dir, char *tokens[], int nb_tokens, char *envp[], char *line_ptr)
 {
 char path[PATH_MAX];
 
 if (strcpy(path, dir) == NULL)
 {
-errors(EXIT_FAILURE, "strcpy failed", tokens, NULL);
+errors(EXIT_FAILURE, "strcpy failed", tokens, line_ptr);
 free(dir);
 }
 if (strcat(path, "/") == NULL)
-errors(EXIT_FAILURE, "strcat failed", tokens, NULL);
+errors(EXIT_FAILURE, "strcat failed", tokens, line_ptr);
 
 if (nb_tokens > 0 && tokens[0] != NULL)
 {
 	if (strcat(path, tokens[0]) == NULL)
 	{
-	errors(EXIT_FAILURE, "strcat failed", tokens, NULL);
+	errors(EXIT_FAILURE, "strcat failed", tokens, line_ptr);
 	free(tokens);
 	}
 }
 
 if (access(path, X_OK) == 0)
 {
-	execute(path, tokens, envp);
+	execute(path, tokens, envp, line_ptr);
 	return (1);
 }
 

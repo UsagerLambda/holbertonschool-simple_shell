@@ -11,25 +11,25 @@
  * with a failure status. The parent process waits for the child process to
  * complete before continuing.
  */
-void execute(char *path, char *tokens[], char *envp[])
+void execute(char *path, char *tokens[], char *envp[], char *line_ptr)
 {
 	pid_t pid;
 	int status;
 
 	pid = fork();
 	if (pid == -1)
-		errors(EXIT_FAILURE, "fork failed", tokens, NULL);
+		errors(EXIT_FAILURE, "fork failed", tokens, line_ptr);
 
 	if (pid == 0)
 	{
 		execve(path, &tokens[0], envp);
-		errors(EXIT_FAILURE, "execve failed", tokens, NULL);
+		errors(EXIT_FAILURE, "execve failed", tokens, line_ptr);
 	}
 	else
 	{
 		if (wait(&status) == -1)
 		{
-			errors(EXIT_FAILURE, "wait failed", tokens, NULL);
+			errors(EXIT_FAILURE, "wait failed", tokens, line_ptr);
 		}
 	}
 }

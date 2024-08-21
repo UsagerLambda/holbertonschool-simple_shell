@@ -20,7 +20,6 @@ int open_shell(int argc, char *argv[], char *envp[])
     int nb_tokens;
     size_t size_line = 0;
     ssize_t nbchar_line = 0;
-    int i = 0;
 
     (void)argc;
     (void)argv;
@@ -50,19 +49,9 @@ int open_shell(int argc, char *argv[], char *envp[])
         parse(line_ptr, tokens, &nb_tokens);
 
         if (execute_builtin(tokens, envp) == -1)
-        {
             which_path(tokens, nb_tokens, envp, line_ptr);
         }
-    }
-
-    if (line_ptr)
-        free(line_ptr);
-
-    while (tokens[i])
-    {
-    tokens[i] = NULL;
-    i++;
-    }
-
+    free(line_ptr);
     return (0);
 }
+

@@ -21,6 +21,8 @@ int execute_builtin(char **tokens, char **envp)
 	{NULL, NULL}
 	};
 
+	if (tokens[0] == NULL)
+		return (-1);
 
 	while (builtins[i].cmd != NULL)
 	{

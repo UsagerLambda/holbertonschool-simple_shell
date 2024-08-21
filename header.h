@@ -19,14 +19,9 @@
  * points to the function responsible for executing the command. The function
  * takes two arguments: an array of arguments and the environment variables.
  */
-typedef struct builtin_s
-{
-	char *cmd;
-	int (*func)(char **args, char **envp);
-} builtin_t;
-int execute_builtin(char **tokens, char **envp);
-int shell_exit(char **args, char **envp);
-int shell_env(char **args, char **envp);
+int execute_builtin(char **tokens, char **envp, char *line_ptr);
+int shell_exit(char **args, char **envp, char *line_ptr);
+int shell_env(char **args, char **envp, char *line_ptr);
 int open_shell(int argc, char *argv[], char *envp[]);
 int use_argv(int argc, char *argv[], char *envp[]);
 void parse(char *line_ptr, char *tokens[], int *nb_tokens);

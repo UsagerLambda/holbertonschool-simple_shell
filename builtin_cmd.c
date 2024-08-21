@@ -9,7 +9,7 @@
  *
  * Return: Always returns 0.
  */
-int shell_env(char **args, char **envp)
+int shell_env(char **args, char **envp, char *line_ptr)
 {
 	int i = 0;
 	(void)args;
@@ -19,6 +19,7 @@ int shell_env(char **args, char **envp)
 		printf("%s\n", envp[i]);
 		i++;
 	}
+	free(line_ptr);
 	return (0);
 }
 
@@ -32,10 +33,11 @@ int shell_env(char **args, char **envp)
  *
  * Return: Always returns 0.
  */
-int shell_exit(char **args, char **envp)
+int shell_exit(char **args, char **envp, char *line_ptr)
 {
 	(void)args;
 	(void)envp;
+	free(line_ptr);
 	exit(0);
 	return (0);
 }

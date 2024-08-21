@@ -48,7 +48,7 @@ int open_shell(int argc, char *argv[], char *envp[])
 
         parse(line_ptr, tokens, &nb_tokens);
 
-        if (execute_builtin(tokens, envp) == -1)
+        if (execute_builtin(tokens, envp, line_ptr) == -1)
             which_path(tokens, nb_tokens, envp, line_ptr);
         }
     free(line_ptr);

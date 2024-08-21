@@ -11,26 +11,13 @@
  *
  * Return: Returns 0 if a built-in command is executed, -1 otherwise.
  */
-int execute_builtin(char **tokens, char **envp)
+int execute_builtin(char **tokens, char **envp, char *line_ptr)
 {
-	int i = 0;
+	if (strcmp(tokens[0], "exit") == 0)
+		shell_exit(tokens, envp, line_ptr);
 
-	builtin_t builtins[] = {
-	{"exit", shell_exit},
-	{"env", shell_env},
-	{NULL, NULL}
-	};
+	if (strcmp(tokens[0], "env") == 0)
+		shell_env(tokens, envp, line_ptr);
 
-	if (tokens[0] == NULL)
-		return (-1);
-
-	while (builtins[i].cmd != NULL)
-	{
-		if (strcmp(tokens[0], builtins[i].cmd) == 0)
-		{
-		return (builtins[i].func(tokens, envp));
-		}
-		i++;
-	}
 	return (-1);
 }

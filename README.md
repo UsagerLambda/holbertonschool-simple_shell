@@ -147,7 +147,7 @@ flowchart TD
     B -- Non --> D[Appeler use_argv]
     C --> E[Afficher le prompt]
     E --> F[Lire la ligne de commande avec getline]
-    F --> G{EOF  ou Crtl + D}
+    F --> G{EOF ou Ctrl + D}
     G -- Oui --> H[Libérer mémoire et quitter]
     G -- Non --> I[Supprimer le saut de ligne]
     I --> J[Diviser la ligne en tokens]
@@ -165,7 +165,6 @@ flowchart TD
     H --> S[Fin]
 
     classDef startEnd fill:#ff5733,stroke:#333,stroke-width:2px;
-    classDef decision fill:#FFFF99,stroke:#333,stroke-width:2px,color:#000;
+    classDef condition fill:#ffff99,stroke:#333,stroke-width:2px;
     class A,H,S startEnd;
-    class B,G,K,N decision;
-
+    class B,G,K,N condition;

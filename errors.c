@@ -14,7 +14,9 @@ void errors(int code, char *str, char *tok[], char *line_ptr)
 if (isatty(0) == 0)
 {
 fprintf(stderr, "hsh: %d: %s: not found\n", code, tok[0]);
-free(tok[0]);
+if (line_ptr == NULL)
+exit(127);
+if (line_ptr)
 free(line_ptr);
 exit(127);
 }

@@ -1,0 +1,66 @@
+.TH SIMPLE-SHELL 1 "August 2024" "Version 1.0" "simple-shell"
+.SH NAME
+simple-shell - Custom implementation of a simple shell
+
+.SH SYNOPSIS
+.B #include "header.h"
+.br
+.BI "int main(int argc, char *argv[], char *envp[]);"
+
+.SH DESCRIPTION
+.B simple-shell
+is a custom implementation of a Unix-like command-line interpreter. It supports executing built-in commands as well as external programs found in the system's PATH.
+
+This project is an exercise from Holberton School, created to practice the fundamentals of operating system concepts and process management.
+
+.SH PARAMETERS
+.TP
+.B int argc :
+The number of command-line arguments.
+.br
+.TP
+.B char *argv[] :
+An array of command-line arguments.
+.br
+.TP
+.B char *envp[] :
+An array of environment variables.
+
+.SH BUILT-IN COMMANDS
+.TP
+.B exit :
+Exits the shell.
+.br
+.TP
+.B env :
+Displays the environment variables.
+
+.SH RETURN VALUE
+.B simple-shell
+returns 0 on success. If an error occurs, it may return a non-zero value to indicate failure.
+
+.SH EXAMPLES
+.TP
+.B $ ./hsh
+.br
+$ env
+.br
+PATH=/usr/local/bin:/usr/bin:/bin
+.br
+HOME=/home/user
+.br
+$ exit
+.br
+.br
+
+The example above demonstrates a basic usage of the shell. The `env` command displays the current environment variables, and the `exit` command terminates the shell session.
+
+.SH AUTHOR
+Written by Clément and Ema.
+
+.SH REPORTING BUGS
+Report bugs to https://github.com/UsagerLambda/simple-shell/issues
+
+.SH SEE ALSO
+.B sh(1),
+.B bash(1)

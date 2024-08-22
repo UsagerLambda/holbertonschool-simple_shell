@@ -1,16 +1,15 @@
 #include "header.h"
-
 /**
  * open_shell - Runs the shell in interactive mode.
- * @argc: The number of command-line arguments.
- * @argv: An array of pointers to the arguments.
- * @envp: The environment variables.
+ * @argc: Number of command-line arguments.
+ * @argv: Array of pointers to the arguments.
+ * @envp: Array of environment variables.
  *
  * This function displays a prompt and waits for the user to input commands.
  * It processes each command by tokenizing the input, checking for built-ins,
- * and then executing the command if it exists in the PATH.
+ * and then executing the command.
  *
- * Return: Returns 0 on success, or -1 on error.
+ * Return: Always 0.
  */
 int open_shell(int argc, char *argv[], char *envp[])
 {

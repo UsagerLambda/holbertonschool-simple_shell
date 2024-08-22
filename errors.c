@@ -1,12 +1,13 @@
 #include "header.h"
 /**
- * errors - Prints an error message and exits the program.
- * @code: The exit code to use when terminating the program.
- * @str: The error message to print.
- * @tok: -
+ * errors - Handles errors by printing a message and optionally freeing memory.
+ * @code: Exit code for the process.
+ * @str: Error message to print.
+ * @tok: Array of tokens (can be NULL).
+ * @line_ptr: Pointer to the line input, used for memory cleanup (can be NULL).
  *
- * This function prints the specified error message to the standard error
- * stream and then exits the program with the given exit code.
+ * This function prints an error message to stderr, frees any allocated
+ * memory if necessary, and then exits the process with the given code.
  */
 void errors(int code, char *str, char *tok[], char *line_ptr)
 {

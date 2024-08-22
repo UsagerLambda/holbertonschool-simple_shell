@@ -1,10 +1,11 @@
 #include "header.h"
 /**
  * it_exist - Checks if a command exists in a specified directory.
- * @dir: The directory to search in.
- * @tokens: The array of command and arguments.
- * @nb_tokens: The number of tokens in the command.
- * @envp: The environment variables.
+ * @dir: Directory to search in.
+ * @tokens: Array of command and arguments.
+ * @nb_tokens: Number of tokens in the command.
+ * @envp: Array of environment variables.
+ * @line_ptr: Pointer to the line input, used for memory cleanup.
  *
  * This function constructs the full path to the command by concatenating
  * the directory path and the command name. It then checks if the command
@@ -13,7 +14,7 @@
  * and returns 1. If the command does not exist or is not executable,
  * it returns 0.
  *
- * Return: Returns 1 if the command exists and is executable, 0 otherwise.
+ * Return: 1 if the command exists and is executable, 0 otherwise.
  */
 int it_exist(char *dir, char *tokens[], int nb_tokens, char *envp[], char *line_ptr)
 {

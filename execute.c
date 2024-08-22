@@ -1,9 +1,10 @@
 #include "header.h"
 /**
  * execute - Forks a child process to execute a command.
- * @path: The full path to the executable command.
- * @tokens: An array of command-line arguments, including the command name.
- * @envp: The environment variables.
+ * @path: Full path to the executable command.
+ * @tokens: Array of command-line arguments, including the command name.
+ * @envp: Array of environment variables.
+ * @line_ptr: Pointer to the line input, used for memory cleanup.
  *
  * This function creates a new process using fork(). The child process
  * replaces its image with the command specified by `path` using execve().

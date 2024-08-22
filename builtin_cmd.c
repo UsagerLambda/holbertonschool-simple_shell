@@ -1,13 +1,14 @@
 #include "header.h"
 /**
  * shell_env - Prints the environment variables.
- * @args: The array of command and arguments (unused).
- * @envp: The environment variables.
+ * @args: Array of command and arguments (unused).
+ * @envp: Array of environment variables.
+ * @line_ptr: Pointer to the line input, used for memory cleanup.
  *
  * This function iterates through the environment variables and prints each
  * one to the standard output.
  *
- * Return: Always returns 0.
+ * Return: Always 0.
  */
 int shell_env(char **args, char **envp, char *line_ptr)
 {
@@ -25,13 +26,14 @@ int shell_env(char **args, char **envp, char *line_ptr)
 
 /**
  * shell_exit - Exits the shell.
- * @args: The array of command and arguments (unused).
- * @envp: The environment variables (unused).
+ * @args: Array of command and arguments (unused).
+ * @envp: Array of environment variables (unused).
+ * @line_ptr: Pointer to the line input, used for memory cleanup.
  *
- * This function exits the shell by calling the exit system call. It is
- * typically triggered when the user enters the "exit" command.
+ * This function exits the shell by calling the exit system call.
+ * It is typically triggered when the user enters the "exit" command.
  *
- * Return: Always returns 0.
+ * Return: This function does not return, as it exits the process.
  */
 int shell_exit(char **args, char **envp, char *line_ptr)
 {

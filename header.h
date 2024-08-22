@@ -8,17 +8,7 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 #include <limits.h>
-/**
- * struct builtin_s - Represents a shell builtin command.
- * @cmd: The name of the builtin command (e.g., "exit", "env").
- * @func: A pointer to the function that executes the builtin command.
- *
- * This structure is used to associate a command name with its corresponding
- * function in the shell. The `cmd` member stores the name of the builtin
- * command as a string, while the `func` member is a function pointer that
- * points to the function responsible for executing the command. The function
- * takes two arguments: an array of arguments and the environment variables.
- */
+int check_line_ptr(char *str);
 int execute_builtin(char **tokens, char **envp, char *line_ptr);
 int shell_exit(char **args, char **envp, char *line_ptr);
 int shell_env(char **args, char **envp, char *line_ptr);

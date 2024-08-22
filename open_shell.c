@@ -41,10 +41,8 @@ int open_shell(int argc, char *argv[], char *envp[])
             return (0);
         }
 
-        if (line_ptr[nbchar_line - 1] == '\n')
-        {
-            line_ptr[nbchar_line - 1] = '\0';
-        }
+        if (check_line_ptr(line_ptr) == 0)
+            continue;
 
         parse(line_ptr, tokens, &nb_tokens);
 

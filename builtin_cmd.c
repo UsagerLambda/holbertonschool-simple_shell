@@ -42,5 +42,4 @@ int shell_exit(char **args, char **envp, char *line_ptr)
 
 	free(line_ptr);
 	exit(0);
-	return (0);
 }

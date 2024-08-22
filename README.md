@@ -2,27 +2,28 @@ C - simple_shell
 
 ```mermaid
 flowchart TD
-    A([Start]) --> B[[argv < 2]]
-    B -- yes --> C[[Display prompt]]
-    C --> D[[Get input using getline]]
-    D --> E{Input valid ?}
-    E -- no --> 1([Exit shell]):::error
-    E -- yes --> F[[Parse input]]
-    F --> G{Fork process}
-    G -- Error --> 2([Print fork error]):::error
-    G -- Child --> H{Has tokens ?}
-    G -- Parent --> I[[Wait for child]]
-    H -- No --> 3([Exit child]):::error
-    H -- yes --> J[[Execute command]]
-    J --> 4([Exit child]):::error
-    I --> C
+    A[Début] --> B{Nombre d'arguments < 2 ?}
+    B -- Oui --> C[Appeler open_shell]
+    B -- Non --> D[Appeler use_argv]
+    C --> E[Afficher le prompt]
+    E --> F[Lire la ligne de commande avec getline]
+    F --> G{EOF  ou Crtl + D}
+    G -- Oui --> H[Libérer mémoire et quitter]
+    G -- Non --> I[Supprimer le saut de ligne]
+    I --> J[Diviser la ligne en tokens]
+    J --> K{Commande intégrée ?}
+    K -- Oui --> L[Exécuter commande intégrée]
+    K -- Non --> M[Trouver le chemin de la commande]
+    L --> E
+    M --> N{Chemin trouvé ?}
+    N -- Oui --> P[Exécuter la commande]
+    N -- Non --> Q[Afficher une erreur]
+    P --> E
+    Q --> E
+    D --> R[Diviser argv en tokens]
+    R --> M
+    H --> S[Fin]
 
-    B -- no --> K[[parse arguments]]
-    K --> L[[Check if the argument is in the path]]
-    L -- no --> 5([Print error]):::error
-    L -- yes --> M[[Execute command]]
-    M --> N([End])
-
-    classDef error fill:#f96,stroke:#333,stroke-width:2px;
-    classDef exit fill:#e96,stroke:#333,stroke-width:2px;
+    classDef startEnd fill:#ff5733,stroke:#333,stroke-width:2px;
+    class A,H,S startEnd;
 ```

@@ -16,7 +16,8 @@
  *
  * Return: 1 if the command exists and is executable, 0 otherwise.
  */
-int it_exist(char *dir, char *tokens[], int nb_tokens, char *envp[], char *line_ptr)
+int it_exist(char *dir, char *tokens[], int nb_tokens, char *envp[],
+	char *line_ptr)
 {
 char path[PATH_MAX];
 

@@ -26,11 +26,11 @@ if (path == NULL)
 errors(EXIT_FAILURE, "strdup failed", tokens, line_ptr);
 
 if (tokens[0] == NULL)
-    {
-        errors(EXIT_FAILURE, "command not found", tokens, line_ptr);
-        free(path);
-        return;
-    }
+{
+	errors(EXIT_FAILURE, "command not found", tokens, line_ptr);
+	free(path);
+	return;
+}
 
 if (access(tokens[0], X_OK) == 0 && tokens[0] != NULL)
 {

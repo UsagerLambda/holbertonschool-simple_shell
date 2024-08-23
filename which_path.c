@@ -15,17 +15,9 @@ void which_path(char **tokens, int nb_tokens, char *envp[], char *line_ptr)
 int found = 0;
 char *path, *dir;
 char *path_env = NULL;
-int i;
 (void)line_ptr;
 
-for (i = 0; envp[i] != NULL; i++)
-{
-	if (strncmp(envp[i], "PATH=", 5) == 0)
-	{
-		path_env = envp[i] + 5;
-		break;
-	}
-}
+get_env(&path_env, envp);
 
 if (path_env == NULL)
 errors(EXIT_FAILURE, "getenv failed", tokens, line_ptr);
@@ -59,6 +51,5 @@ while (dir != NULL && !found)
 
 if (!found)
 	errors(EXIT_FAILURE, "command not found", tokens, line_ptr);
-
 free(path);
 }

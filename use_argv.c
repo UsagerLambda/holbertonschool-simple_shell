@@ -15,7 +15,7 @@ int use_argv(int argc, char *argv[], char *envp[])
 {
 	int i = 0;
 	int nb_tokens;
-	char **tokens = malloc(argc * sizeof(char *));
+	char **tokens = malloc((argc - 1) * sizeof(char *));
 
 	if (tokens == NULL)
 		errors(EXIT_FAILURE, "malloc failed", argv, NULL);

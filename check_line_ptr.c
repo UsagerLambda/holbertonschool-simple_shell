@@ -12,9 +12,9 @@ int check_line_ptr(char *str)
 {
 	while (*str != '\0')
 	{
-		if (*str != ' ' && *str != '\n')
+		if (*str != ' ' && *str != '\n' && *str != '\t')
 			return (-1);
-	str++;
+		str++;
 	}
 	return (0);
 }

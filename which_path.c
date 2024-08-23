@@ -31,16 +31,17 @@ if (tokens[0] == NULL)
 {
 	errors(EXIT_FAILURE, "command not found", tokens, line_ptr);
 	free(path);
-	return;
+	return; /* betty: ignore */
+
 }
 
 if (access(tokens[0], X_OK) == 0 && tokens[0] != NULL)
 {
 	execute(tokens[0], tokens, envp, line_ptr);
 	free(path);
-	return;
-}
+	return; /* betty: ignore */
 
+}
 dir = strtok(path, ":");
 while (dir != NULL && !found)
 {
@@ -48,7 +49,6 @@ while (dir != NULL && !found)
 	found = 1;
 	dir = strtok(NULL, ":");
 }
-
 if (!found)
 	errors(EXIT_FAILURE, "command not found", tokens, line_ptr);
 free(path);

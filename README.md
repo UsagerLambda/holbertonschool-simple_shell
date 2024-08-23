@@ -142,28 +142,27 @@ The Simple Shell project is a Unix command interpreter implemented in C, created
 
 ```mermaid
 flowchart TD
-    A[Début] --> B{Nombre d'arguments < 2 ?}
-    B -- Oui --> C[Appeler open_shell]
-    B -- Non --> D[Appeler use_argv]
-    C --> E[Afficher le prompt]
-    E --> F[Lire la ligne de commande avec getline]
-    F --> G{EOF ou Ctrl + D}
-    G -- Oui --> H[Libérer mémoire et quitter]
-    G -- Non --> I[Supprimer le saut de ligne]
-    I --> J[Diviser la ligne en tokens]
-    J --> K{Commande intégrée ?}
-    K -- Oui --> L[Exécuter commande intégrée]
-    K -- Non --> M[Trouver le chemin de la commande]
+    A[Start] --> B{Number of arguments < 2?}
+    B -- Yes --> C[Call open_shell]
+    B -- No --> D[Call use_argv]
+    C --> E[Display the prompt]
+    E --> F[Read the command line with getline]
+    F --> G{EOF or Ctrl + D?}
+    G -- Yes --> H[Free memory and exit]
+    G -- No --> I[Remove the newline character]
+    I --> J[Split the line into tokens]
+    J --> K{Built-in command?}
+    K -- Yes --> L[Execute built-in command]
+    K -- No --> M[Find the command path]
     L --> E
-    M --> N{Chemin trouvé ?}
-    N -- Oui --> P[Exécuter la commande]
-    N -- Non --> Q[Afficher une erreur]
+    M --> N{Path found?}
+    N -- Yes --> P[Execute the command]
+    N -- No --> Q[Display an error]
     P --> E
     Q --> E
-    D --> R[Diviser argv en tokens]
+    D --> R[Split argv into tokens]
     R --> M
-    H --> S[Fin]
-
+    H --> S[End]
     classDef startEnd fill:#ff5733,stroke:#333,stroke-width:2px;
     classDef condition fill:#ffff99,stroke:#333,stroke-width:2px;
     class A,H,S startEnd;
